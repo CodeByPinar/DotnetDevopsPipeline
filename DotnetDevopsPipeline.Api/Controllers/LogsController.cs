@@ -4,35 +4,40 @@ using DotnetDevopsPipeline.Api.Models;
 namespace DotnetDevopsPipeline.Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/logs")] // ✅ NET ve KESİN ROUTE
     public class LogsController : ControllerBase
     {
+        private readonly IWebHostEnvironment _env;
+
+        public LogsController(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
+
         [HttpGet]
         public IActionResult GetLogs([FromQuery] int take = 200)
         {
-            var logDirectory = Path.Combine(AppContext.BaseDirectory, "Logs");
+            // ✅ Render + Docker + Local uyumlu gerçek log path
+            var logDirectory = Path.Combine(_env.ContentRootPath, "Logs");
 
             if (!Directory.Exists(logDirectory))
-                return Ok(Array.Empty<LogEntry>());
+                return Ok(new List<string>());
 
-            // Bugünün log dosyasını al
-            var todayFile = Directory
+            var latestFile = Directory
                 .GetFiles(logDirectory, "log-*.txt")
                 .OrderByDescending(x => x)
                 .FirstOrDefault();
 
-            if (todayFile is null || !System.IO.File.Exists(todayFile))
-                return Ok(Array.Empty<LogEntry>());
+            if (latestFile == null)
+                return Ok(new List<string>());
 
-            var allLines = System.IO.File.ReadAllLines(todayFile);
+            var allLines = System.IO.File.ReadAllLines(latestFile);
+
             var lastLines = allLines
-                .Reverse()
-                .Take(take)
-                .Reverse()
-                .Select(l => new LogEntry { Raw = l })
+                .TakeLast(take)
                 .ToList();
 
-            return Ok(lastLines);
+            return Ok(lastLines); // ✅ AdminUI artık direkt List<string> alacak
         }
     }
 }
