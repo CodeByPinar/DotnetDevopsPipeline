@@ -213,3 +213,51 @@ GET /health
 # ✅ License
 
 MIT
+
+---
+
+## 📌 Changelog
+
+All notable changes to this project are documented in this section.  
+This project follows **Semantic Versioning (SemVer)**.
+
+---
+
+### 🔹 v1.1.0 – Production Stability & API Versioning  
+**Release Date:** 2025-12-09
+
+#### ✅ Added
+- API versioning structure introduced (`/api/v1`)
+- Versioned health endpoint: `/api/v1/health`
+- Versioned Swagger UI access
+- Production-ready routing structure using `MapGroup`
+- Render production environment stabilization
+- Improved Serilog request logging for production visibility
+
+#### 🔧 Fixed
+- `UsePathBase` routing conflict resolved
+- Swagger and Health endpoints properly aligned with API versioning
+- Render port binding and startup stability issues fixed
+
+#### 🚀 Deployment
+- Fully automated CI + Docker + Render deployment verified
+- Live health monitoring confirmed in production
+
+---
+
+### 🔹 v1.0.0 – Initial Production Release  
+**Release Date:** 2025-12-09
+
+#### ✅ Features
+- .NET 8 Web API project initialized
+- Swagger UI integrated
+- Health check endpoint added (`/health`)
+- Serilog file & console logging enabled
+- Docker multi-stage build configured
+- GitHub CI pipeline created and verified
+- Render cloud deployment completed successfully
+
+#### 🎯 Status
+- Production-ready baseline established
+
+---
