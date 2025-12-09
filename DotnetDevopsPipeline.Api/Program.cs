@@ -26,10 +26,13 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-// API v1 route group
+// ✅ API v1 route group
 var v1 = app.MapGroup("/api/v1");
 
 v1.MapControllers();
 v1.MapHealthChecks("/health");
+
+// ✅ ROOT health endpoint (Render ve dış sistemler için ZORUNLU)
+app.MapHealthChecks("/health");
 
 app.Run();
