@@ -29,9 +29,6 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: 🐳 Build Docker Image
-      run: docker build -t dotnetdevopspipeline ./DotnetDevopsPipeline.Api
+      working-directory: DotnetDevopsPipeline.Api
+      run: docker build -t dotnetdevopspipeline .
 
-      run: dotnet build --no-restore
-
-    - name: ✅ Run Tests
-      run: dotnet test --no-build --verbosity normal
