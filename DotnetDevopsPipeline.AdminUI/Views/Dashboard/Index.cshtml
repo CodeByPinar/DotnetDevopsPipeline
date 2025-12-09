@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "DevOps Dashboard";
+    var health = ViewBag.HealthStatus as string ?? "Unknown";
+    var healthColor = health == "Healthy" ? "success" : "danger";
+}
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="p-4 rounded shadow-sm bg-dark text-white d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="fw-bold mb-1">DevOps Admin Dashboard</h2>
+                    <p class="mb-0 text-muted">DotNet DevOps Pipeline – Production Control Center</p>
+                </div>
+                <span class="badge bg-success fs-6">LIVE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- METRICS CARDS -->
+    <div class="row g-4 mb-4">
+
+        <!-- API HEALTH -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">API Status</h6>
+                    <h4 class="fw-bold text-@healthColor">@health</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENVIRONMENT -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Environment</h6>
+                    <h4 class="fw-bold text-primary">Production</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAST DEPLOY -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Last Deploy</h6>
+                    <h4 class="fw-bold text-dark">Active</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- CI PIPELINE -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">CI Pipeline</h6>
+                    <h4 class="fw-bold text-success">Passing</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="row g-4">
+
+        <!-- LOGS -->
+        <div class="col-md-4">
+            <a href="/Logs" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 hover-card">
+                    <div class="card-body text-center">
+                        <h5 class="fw-bold">Logs</h5>
+                        <p class="text-muted mb-0">Canlı Serilog kayıtlarını incele</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- SWAGGER -->
+        <div class="col-md-4">
+            <a href="https://dotnet-devops-pipeline.onrender.com/swagger" target="_blank" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 hover-card">
+                    <div class="card-body text-center">
+                        <h5 class="fw-bold">Swagger</h5>
+                        <p class="text-muted mb-0">API endpoint dokümantasyonu</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- HEALTH -->
+        <div class="col-md-4">
+            <a href="https://dotnet-devops-pipeline.onrender.com/api/v1/health" target="_blank" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 hover-card">
+                    <div class="card-body text-center">
+                        <h5 class="fw-bold">Health Check</h5>
+                        <p class="text-muted mb-0">Canlı sistem sağlık durumu</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</div>

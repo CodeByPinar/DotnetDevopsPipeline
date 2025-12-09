@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container">
+    <!-- HERO -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="p-4 rounded shadow-sm bg-dark text-white">
+                <h1 class="fw-bold mb-2">DotNet DevOps Pipeline</h1>
+                <p class="mb-0">
+                    Production ortamda çalışan .NET 8 Web API için canlı izleme ve yönetim paneli.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATUS CARDS -->
+    <div class="row g-4 mb-4">
+
+        <!-- API STATUS -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">API Status</h6>
+                    <h4 class="fw-bold text-success">Healthy</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENV -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Environment</h6>
+                    <h4 class="fw-bold text-primary">Production</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEPLOY -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Last Deploy</h6>
+                    <h4 class="fw-bold text-dark">Live</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- CI STATUS -->
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">CI Pipeline</h6>
+                    <h4 class="fw-bold text-success">Passing</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <a href="/Dashboard" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 hover-card">
+                    <div class="card-body text-center">
+                        <h5>Dashboard</h5>
+                        <p class="text-muted mb-0">Canlı sistem durumunu görüntüle</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="/Logs" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 hover-card">
+                    <div class="card-body text-center">
+                        <h5>Logs</h5>
+                        <p class="text-muted mb-0">Serilog log kayıtlarını incele</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="https://dotnet-devops-pipeline.onrender.com/swagger" target="_blank" class="text-decoration-none">
+                <div class="card border-0 shadow-sm h-100 hover-card">
+                    <div class="card-body text-center">
+                        <h5>Swagger</h5>
+                        <p class="text-muted mb-0">API endpoint dokümantasyonu</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>

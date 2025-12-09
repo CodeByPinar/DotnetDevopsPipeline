@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="DotnetDevopsPipeline.AdminUI/DotnetDevopsPipeline.AdminUI.csproj" Id="6f2c978d-cefd-40ea-8173-63b65705e21e" />
   <Project Path="DotnetDevopsPipeline.Api/DotnetDevopsPipeline.Api.csproj" />
 </Solution>
