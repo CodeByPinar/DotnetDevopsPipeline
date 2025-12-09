@@ -2,6 +2,7 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Serilog configuration
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.Console()
@@ -17,9 +18,7 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-app.UsePathBase("/api/v1");
-
-app.UseSerilogRequestLogging(); // ✅ HTTP request logları
+app.UseSerilogRequestLogging();
 
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -27,7 +26,10 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-app.MapControllers();
-app.MapHealthChecks("/health");
+// API v1 route group
+var v1 = app.MapGroup("/api/v1");
+
+v1.MapControllers();
+v1.MapHealthChecks("/health");
 
 app.Run();
