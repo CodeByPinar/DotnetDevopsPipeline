@@ -17,6 +17,8 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
+app.UsePathBase("/api/v1");
+
 app.UseSerilogRequestLogging(); // ✅ HTTP request logları
 
 app.UseSwagger();
